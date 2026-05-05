@@ -144,9 +144,8 @@ private extension Message {
     var compactDebuggingDescription: String {
         let content =
             (attributedBody?.unwrappingSensitiveData().string) ?? text?.unwrappingSensitiveData()
-        let quotedContent = content.map { "\"\($0)\"" }
-        return
-            "#\(id) \(guid): \(quotedContent, default: "<no text>") @\(date.formattedForDebugging)"
+        let quotedContent = content.map { "\"\($0)\"" } ?? "<no text>"
+        return "#\(id) \(guid): \(quotedContent) @\(date.formattedForDebugging)"
     }
 }
 

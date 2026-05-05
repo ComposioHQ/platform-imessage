@@ -14,7 +14,8 @@ public extension Message {
         var parts = [Message.Part]()
         body.enumerateAttribute(.imPart, in: entire) { rawIndex, range, stop in
             guard let index = rawIndex as? Int else {
-                log.warning("encountered non-integer message part index: \(rawIndex, default: "nil")")
+                let rawIndexDescription = rawIndex.map { String(describing: $0) } ?? "nil"
+                log.warning("encountered non-integer message part index: \(rawIndexDescription)")
                 return
             }
 
