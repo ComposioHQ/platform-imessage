@@ -68,7 +68,7 @@ final class MessagesAccessManager: NSObject, NSOpenSavePanelDelegate {
                 try? PromptAutomation.confirmDirectoryAccess(buttonTitle: buttonTitle)
             }
         }
-        let response = if let window = NSApp.mainWindow {
+        let response = if let window = NSApp?.mainWindow {
             await openPanel.beginSheetModal(for: window)
         } else {
             openPanel.runModal()

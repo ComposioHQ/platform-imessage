@@ -606,7 +606,7 @@ isMessagesAppResponsive=\(isMessagesAppResponsive)
 
     private func revealReplyTranscriptViaMenu() throws {
         do {
-            let window = NSApp.largestElectronWindow
+            let window = NSApp?.largestElectronWindow
             let previousLevel = window?.level
             if let window {
                 DispatchQueue.main.sync {

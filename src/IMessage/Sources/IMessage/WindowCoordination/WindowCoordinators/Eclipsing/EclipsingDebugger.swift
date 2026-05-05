@@ -99,7 +99,7 @@ public extension EclipsingDebugger {
 
 private extension NSScreen {
     static var suitableForDebugger: NSScreen {
-        if let screen = NSApp.largestElectronWindow?.screen {
+        if let screen = NSApp?.largestElectronWindow?.screen {
             return screen
         }
 

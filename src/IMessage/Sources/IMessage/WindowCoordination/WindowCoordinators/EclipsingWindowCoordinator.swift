@@ -37,7 +37,11 @@ final class EclipsingWindowCoordinator: WindowCoordinator {
     }
 
     func makeAutomatable(_ messagesWindow: Accessibility.Element) throws {
-        let largestElectronWindow = try NSApp.largestElectronWindow.orThrow(WindowCoordinatorError.generic(message: "Couldn't find Electron window"))
+        guard let largestElectronWindow = NSApp?.largestElectronWindow else {
+            log.warning("couldn't find a host Electron window, making Messages automatable without eclipsing")
+            hideDebouncer.immediatelyUnhide()
+            return
+        }
 
         let originalMessagesFrame = try messagesWindow.frame()
         if windowFramePreEclipse == nil {

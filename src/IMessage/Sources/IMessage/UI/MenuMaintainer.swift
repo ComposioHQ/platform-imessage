@@ -79,7 +79,7 @@ private enum InjectionError: Error {
 private func injectIntoSuitableMenuIfNeeded(_ new: NSMenuItem) throws(InjectionError) {
     dumpMainMenu(reason: "trying to inject")
 
-    guard let mainMenu = NSApp.mainMenu else {
+    guard let mainMenu = NSApp?.mainMenu else {
         log.error("couldn't inject, no main menu? (yet?)")
         throw .noMainMenu
     }
@@ -184,7 +184,7 @@ private func dumpMainMenu(reason: String? = nil) {
         "main menu dump"
     }
 
-    guard let mainMenu = NSApp.mainMenu else {
+    guard let mainMenu = NSApp?.mainMenu else {
         log.error("\(prefix): no main menu!")
         return
     }

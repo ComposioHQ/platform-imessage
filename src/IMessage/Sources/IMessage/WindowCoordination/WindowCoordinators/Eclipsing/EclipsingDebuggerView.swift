@@ -57,7 +57,7 @@ struct EclipsingPointView: View {
     }
 
     var position: CGPoint {
-        if let screen = NSApp.largestElectronWindow?.screen {
+        if let screen = NSApp?.largestElectronWindow?.screen {
             point.reoriented(displayingOn: screen)
         } else {
             point.position
@@ -147,7 +147,7 @@ struct EclipsingRectView: View {
 
     var body: some View {
         let color = Color(rect.color)
-        let rect = if let screen = NSApp.largestElectronWindow?.screen {
+        let rect = if let screen = NSApp?.largestElectronWindow?.screen {
             rect.reoriented(displayingOn: screen)
         } else {
             rect.rect
